@@ -6,16 +6,16 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gnk.course.entities.pk.OrderItemPK;
 
 @Entity
 @Table(name = "tb_order_item")
-<<<<<<< HEAD
 public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private OrderItemPK id;
+	private OrderItemPK id = new OrderItemPK();
 
 	private Integer quantity;
 	private Double price;
@@ -31,6 +31,7 @@ public class OrderItem implements Serializable {
 		this.price = price;
 	}
 
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}
@@ -43,59 +44,16 @@ public class OrderItem implements Serializable {
 		return id.getProduct();
 	}
 
-=======
-public class OrderItem implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
-	
-	@EmbeddedId
-	private OrderItemPK id;
-	
-	private Integer quatity;
-	private Double price;
-	
-	public OrderItem() {
-	}
-
-	public OrderItem(Order order, Product product, Integer quatity, Double price) {
-		id.setOrder(order);
-		id.setProduct(product);
-		this.quatity = quatity;
-		this.price = price;
-	}
-	
-	public Order getOrder() {
-		return id.getOrder();
-	}
-	
-	public void setOrder(Order order) {
-		id.setOrder(order);
-	}
-	
-	public Product getProduct() {
-		return id.getProduct();
-	}
-	
->>>>>>> 130bd5f7fda8df93b335ed6379e5de688b67f42d
 	public void setProduct(Product product) {
 		id.setProduct(product);
 	}
 
-<<<<<<< HEAD
 	public Integer getQuantity() {
 		return quantity;
 	}
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
-=======
-	public Integer getQuatity() {
-		return quatity;
-	}
-
-	public void setQuatity(Integer quatity) {
-		this.quatity = quatity;
->>>>>>> 130bd5f7fda8df93b335ed6379e5de688b67f42d
 	}
 
 	public Double getPrice() {
